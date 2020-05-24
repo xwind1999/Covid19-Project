@@ -1,0 +1,55 @@
+﻿@model IEnumerable<CovidAssignment.Models.Total>
+@{
+    ViewBag.Title = "Progress";
+    var flagURL = $"https://www.countryflags.io/{ViewBag.ISO2}/shiny/64.png";
+}
+<link rel="stylesheet" href="~/Content/Progress.css" />
+
+<div>
+    <h1><img src="@flagURL" />@ViewBag.Country's statistic</h1>
+</div>
+<table class="table">
+    <tr>
+        <th class="danger">
+            @Html.DisplayNameFor(model => model.Confirmed)
+        </th>
+        <th class="total-deaths-col">
+            @Html.DisplayNameFor(model => model.Deaths)
+        </th>
+        <th class="info">
+            @Html.DisplayNameFor(model => model.Recovered)
+        </th>
+        <th class="active-col">
+            @Html.DisplayNameFor(model => model.Active)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="danger">
+                @Html.DisplayFor(modelItem => item.Confirmed)
+            </td>
+            <td class="total-deaths-col">
+                @Html.DisplayFor(modelItem => item.Deaths)
+            </td>
+            <td class="info">
+                @Html.DisplayFor(modelItem => item.Recovered)
+            </td>
+            <td class="active-col">
+                @Html.DisplayFor(modelItem => item.Active)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+        </tr>
+    }
+
+</table>
+<button class="btn-primary" onclick="location.href='@Url.Action("Index","Countries")'">
+    Back To List
+</button>

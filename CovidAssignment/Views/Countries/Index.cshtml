@@ -1,0 +1,250 @@
+﻿@model IEnumerable<CovidAssignment.Models.CountryStatus>
+@using CovidAssignment.Models;
+
+@{
+    ViewBag.Title = "Index";
+    Global global = ViewBag.Global;
+    var list = Model.ToList().OrderByDescending(item => item.TotalConfirmed).ToList().Take(6).ToList();
+    var deathList = Model.ToList().OrderByDescending(item=>item.TotalDeaths).ToList().Take(6).ToList();
+}
+<link rel="stylesheet" href="~/Content/Index.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="~/Scripts/DrawChart.js"></script>
+<div class="row">
+    <div class="col-md-2 red">
+        <div>
+            <h4>New Confirmed </h4>
+        </div>
+        <div class="number">@global.NewConfirmed</div>
+        <div class="space"></div>
+        <div><h4>Total Confirmed </h4></div>
+        <div class="number"><p id="totalConfirmed">@global.TotalConfirmed</p></div>
+    </div>
+    <div class="col-md-2 blue">
+        <div><h4>New Recovered</h4></div>
+        <div class="number">@global.NewRecovered</div>
+        <div class="space"></div>
+        <div><h4>Total Recovered</h4></div>
+        <div class="number"><p id="totalRecovered">@global.TotalRecovered</p></div>
+    </div>
+    <div class="col-md-2 gray">
+        <div>
+            <h4>New Deaths</h4>
+        </div>
+        <div class="number">@global.NewDeaths</div>
+        <div class="space"></div>
+        <div><h4>Total Deaths</h4></div>
+        <div class="number"><p id="totalDeaths">@global.TotalDeaths</p></div>
+    </div>
+    <div class="col-md-6">
+        <div id="chart"></div>
+    </div>
+</div>
+
+<div>
+    <hr />
+    <h2>Top countries with the highest confirmed cases</h2>
+    <div class="row ">
+        <div class="col-md-4 info-container" onclick="location.href='@Url.Action("Search","Countries",new { id = list[0].Id})'">
+            <h3>
+                @list[0].Name
+            </h3>
+            <img class="flagImage" src=@String.Format("https://www.countryflags.io/{0}/shiny/64.png",list[0].Code.ToLower()) />
+            <h4>
+                Confirmed : @list[0].TotalConfirmed
+            </h4>
+        </div>
+        <div class="col-md-4 info-container" onclick="location.href='@Url.Action("Search","Countries",new { id = list[1].Id})'">
+            <h3>
+                @list[1].Name
+            </h3>
+            <img class="flagImage" src=@String.Format("https://www.countryflags.io/{0}/shiny/64.png",list[1].Code.ToLower()) />
+            <h4>
+                Confirmed : @list[1].TotalConfirmed
+            </h4>
+        </div>
+        <div class="col-md-4 info-container" onclick="location.href='@Url.Action("Search","Countries",new { id = list[2].Id})'">
+            <h3>
+                @list[2].Name
+            </h3>
+            <img class="flagImage" src=@String.Format("https://www.countryflags.io/{0}/shiny/64.png",list[2].Code.ToLower()) />
+            <h4>
+                Confirmed : @list[2].TotalConfirmed
+            </h4>
+        </div>
+    </div>
+    <div class="row ">
+        <div class="col-md-4 info-container" onclick="location.href='@Url.Action("Search","Countries",new { id = list[3].Id})'">
+            <h3>
+                @list[3].Name
+            </h3>
+            <img class="flagImage" src=@String.Format("https://www.countryflags.io/{0}/shiny/64.png",list[3].Code.ToLower()) />
+            <h4>
+                Confirmed : @list[3].TotalConfirmed
+            </h4>
+        </div>
+        <div class="col-md-4 info-container" onclick="location.href='@Url.Action("Search","Countries",new { id = list[4].Id})'">
+            <h3>
+                @list[4].Name
+            </h3>
+            <img class="flagImage" src=@String.Format("https://www.countryflags.io/{0}/shiny/64.png",list[4].Code.ToLower()) />
+            <h4>
+                Confirmed : @list[4].TotalConfirmed
+            </h4>
+        </div>
+        <div class="col-md-4 info-container" onclick="location.href='@Url.Action("Search","Countries",new { id = list[5].Id})'">
+            <h3>
+                @list[5].Name
+            </h3>
+            <img class="flagImage" src=@String.Format("https://www.countryflags.io/{0}/shiny/64.png",list[5].Code.ToLower()) />
+            <h4>
+                Confirmed : @list[5].TotalConfirmed
+            </h4>
+        </div>
+    </div>
+    <hr>
+    <h2>Top countries with the highest deaths cases</h2>
+    <div class="row">
+        <div class="col-md-4 info-container" onclick="location.href='@Url.Action("Search","Countries",new { id = deathList[0].Id})'">
+            <h3>
+                @deathList[0].Name
+            </h3>
+            <img class="flagImage" src=@String.Format("https://www.countryflags.io/{0}/shiny/64.png",deathList[0].Code.ToLower()) />
+            <h4>
+                Deaths : @deathList[0].TotalDeaths
+            </h4>
+        </div>
+        <div class="col-md-4 info-container" onclick="location.href='@Url.Action("Search","Countries",new { id = deathList[1].Id})'">
+            <h3>
+                @deathList[1].Name
+            </h3>
+            <img class="flagImage" src=@String.Format("https://www.countryflags.io/{0}/shiny/64.png",deathList[1].Code.ToLower()) />
+            <h4>
+                Deaths : @deathList[1].TotalDeaths
+            </h4>
+        </div>
+        <div class="col-md-4 info-container" onclick="location.href='@Url.Action("Search","Countries",new { id = deathList[2].Id})'">
+            <h3>
+                @deathList[2].Name
+            </h3>
+            <img class="flagImage" src=@String.Format("https://www.countryflags.io/{0}/shiny/64.png",deathList[2].Code.ToLower()) />
+            <h4>
+                Deaths : @deathList[2].TotalDeaths
+            </h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 info-container" onclick="location.href='@Url.Action("Search","Countries",new { id = deathList[3].Id})'">
+            <h3>
+                @deathList[3].Name
+            </h3>
+            <img class="flagImage" src=@String.Format("https://www.countryflags.io/{0}/shiny/64.png",deathList[3].Code.ToLower()) />
+            <h4>
+                Deaths : @deathList[3].TotalDeaths
+            </h4>
+        </div>
+        <div class="col-md-4 info-container" onclick="location.href='@Url.Action("Search","Countries",new { id = deathList[4].Id})'">
+            <h3>
+                @deathList[4].Name
+            </h3>
+            <img class="flagImage" src=@String.Format("https://www.countryflags.io/{0}/shiny/64.png",deathList[4].Code.ToLower()) />
+            <h4>
+                Deaths : @deathList[4].TotalDeaths
+            </h4>
+        </div>
+        <div class="col-md-4 info-container" onclick="location.href='@Url.Action("Search","Countries",new { id = deathList[5].Id})'">
+            <h3>
+                @deathList[5].Name
+            </h3>
+            <img class="flagImage" src=@String.Format("https://www.countryflags.io/{0}/shiny/64.png",deathList[5].Code.ToLower()) />
+            <h4>
+                Deaths : @deathList[5].TotalDeaths
+            </h4>
+        </div>
+    </div>
+    <hr />
+</div>
+
+@using (Html.BeginForm("Search", "Countries", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-inline" }))
+{
+    <div class="row  form-attribute">
+        <div class="col-md-6">
+            <select class="form-control" id="country" name="countrySearch">
+                @foreach (var i in Model)
+                {
+                    <option value="@i.Name">@i.Name</option>
+                }
+            </select>
+            <button class="btn btn-primary" type="submit">Find</button>
+        </div>
+        <div class="col-md-6">
+            <h4 class="red right">
+                Lastest Update : @DateTime.Now.ToString("yyyy/MM/dd")
+            </h4>
+        </div>
+    </div>
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NewConfirmed)
+        </th>
+        <th class="danger">
+            @Html.DisplayNameFor(model => model.TotalConfirmed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NewDeaths)
+        </th>
+        <th class="total-deaths-col">
+            @Html.DisplayNameFor(model => model.TotalDeaths)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NewRecovered)
+        </th>
+        <th class="info">
+            @Html.DisplayNameFor(model => model.TotalRecovered)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NewConfirmed)
+            </td>
+            <td class="danger">
+                @Html.DisplayFor(modelItem => item.TotalConfirmed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NewDeaths)
+            </td>
+            <td class="total-deaths-col">
+                @Html.DisplayFor(modelItem => item.TotalDeaths)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NewRecovered)
+            </td>
+            <td class="info">
+                @Html.DisplayFor(modelItem => item.TotalRecovered)
+            </td>
+            <td>@Html.ActionLink("Details", "Search", new { id = item.Id })</td>
+        </tr>
+
+    }
+
+</table>

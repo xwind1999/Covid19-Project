@@ -1,0 +1,98 @@
+﻿@model CovidAssignment.Models.CountryStatus
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CountryStatus</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Slug)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Slug)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NewConfirmed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NewConfirmed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalConfirmed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalConfirmed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NewDeaths)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NewDeaths)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalDeaths)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalDeaths)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NewRecovered)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NewRecovered)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalRecovered)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalRecovered)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("More Details", "DayOne",new { id = Model.Name})|
+    @Html.ActionLink("Back to List", "Index")
+</p>

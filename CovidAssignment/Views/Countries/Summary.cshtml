@@ -1,0 +1,63 @@
+﻿@model CovidAssignment.Models.Global
+
+@{
+    ViewBag.Title = "Summary";
+}
+
+<div>
+    <h4>Global</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NewConfirmed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NewConfirmed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalConfirmed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalConfirmed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NewDeaths)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NewDeaths)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalDeaths)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalDeaths)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NewRecovered)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NewRecovered)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalRecovered)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalRecovered)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

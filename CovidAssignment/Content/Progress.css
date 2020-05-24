@@ -1,0 +1,28 @@
+﻿body {
+}
+td {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+th {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.total-deaths-col {
+    background-color: #afbab2;
+}
+
+.active-col {
+    background-color: #abfc9f;
+}
+h1 {
+    text-align: center;
+    margin: 3%
+}
+img {
+    margin: 0% 2%
+}

@@ -1,0 +1,74 @@
+﻿@model CovidAssignment.Models.CountryStatus
+
+@{
+    ViewBag.Title = "Search";
+    var flagURL = $"https://www.countryflags.io/{Model.Code.ToLower()}/shiny/64.png";
+}
+
+<link rel="stylesheet" href="~/Content/Search.css" />
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="~/Scripts/DrawChart.js"></script>
+<div class="row">
+    <div class="col-md-6 cell">
+        <div class="row nation-info">
+            <div class="col-md-6 cell"><img src=@flagURL></div>
+            <div class="col-md-6 cell"><p class="nation-name">@Model.Name</p></div>
+        </div>
+        <div class="row content">
+            <div class="col-md-4 red">
+                <div>
+                    <h4>New Confirmed</h4>
+                </div>
+                <div class="number">
+                    <p>@Model.NewConfirmed</p>
+                </div>
+                <div class="space"></div>
+                <div>
+                    <h4>Total Confirmed</h4>
+                </div>
+                <div class="number">
+                    <p id="totalConfirmed">@Model.TotalConfirmed</p>
+                </div>
+            </div>
+            <div class="col-md-4 blue">
+                <div>
+                    <h4>New Recovered</h4>
+                </div>
+                <div class="number">
+                    <p>@Model.NewRecovered</p>
+                </div>
+                <div class="space"></div>
+                <div>
+                    <h4>Total Recovered</h4>
+                </div>
+                <div class="number">
+                    <p id="totalRecovered">@Model.TotalRecovered</p>
+                </div>
+            </div>
+            <div class="col-md-4 gray">
+                <div>
+                    <h4>New Deaths</h4>
+                </div>
+                <div class="number">
+                    <p>@Model.NewDeaths</p>
+                </div>
+                <div class="space"></div>
+                <div>
+                    <h4>Total Deaths</h4>
+                </div>
+                <div class="number">
+                    <p id="totalDeaths">@Model.TotalDeaths</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 cell">
+        <div id="chart"></div>
+    </div>
+</div>
+<button class="btn-primary" onclick="location.href='@Url.Action("Index","Countries")'">
+    Back To List
+</button>
+<button class="btn-primary" onclick="location.href='@Url.Action("Total","Countries",new { id=Model.Name})'">
+    More Details
+</button>
