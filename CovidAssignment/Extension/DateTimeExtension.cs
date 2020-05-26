@@ -14,7 +14,7 @@ namespace CovidAssignment.Extension
             return $"{FormatInt(time.Year)}-{FormatInt(time.Month)}-{FormatInt(time.Day)}T{FormatInt(time.Hour)}:{FormatInt(time.Minute)}:{FormatInt(time.Second)}Z";
         }
         /// <summary>
-        /// 
+        /// Return true form string format
         /// </summary>
         /// <param name="x"></param>
         /// <returns></returns>

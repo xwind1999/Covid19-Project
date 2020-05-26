@@ -8,6 +8,7 @@ namespace CovidAssignment.Models
 {
     public class CovidApiProperty
     {
+        //Api Endpoint
         public string EndPoint { get; }
 
         public CovidApiProperty()

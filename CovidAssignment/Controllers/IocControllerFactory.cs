@@ -5,6 +5,7 @@ using Unity;
 
 namespace CovidAssignment.Controllers
 {
+    //This code use dependency injection for controller mvc
     public class IocControllerFactory : DefaultControllerFactory
     {
         private readonly IUnityContainer _container;

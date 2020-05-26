@@ -41,8 +41,10 @@ namespace CovidAssignment.Repository
 
             _context = context;
 
+            //Pull Summary Data and save into databases
             PullDataSummary();
 
+            //Pull all countries and save into database
             GetAllCountries();
         }
 

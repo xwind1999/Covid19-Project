@@ -1,5 +1,4 @@
-﻿using CovidAssignment.Models;
-using CovidAssignment.Repository;
+﻿using CovidAssignment.Repository;
 using System;
 using System.Linq;
 using System.Web.Mvc;
@@ -20,7 +19,7 @@ namespace CovidAssignment.Controllers
             return View(_repository.Countries());
         }
 
-
+        //Get Country with Id
         [HttpGet]
         public ActionResult Search(int id)
         {
@@ -28,6 +27,7 @@ namespace CovidAssignment.Controllers
             return View(founditem);
         }
 
+        //Search Country by string name
         [HttpPost]
         public ActionResult Search(string countrySearch)
         {
@@ -39,18 +39,24 @@ namespace CovidAssignment.Controllers
             return RedirectToAction("Index");
         }
 
+        //Get Country Total Progress from the start
         [HttpGet]
         public ActionResult Total(string id)
         {
+            //Country name
             ViewBag.Id = id;
+            //Country ISO2 code
             ViewBag.ISO2 = _repository.GetCountryISO2(id);
             return View(_repository.GetTotal(id));
         }
 
+        //Return result between start day and end day
         [HttpPost]
         public ActionResult Progress(string country, DateTime start, DateTime end)
         {
+            //Country name
             ViewBag.Country = country;
+            //Country ISO2 Code
             ViewBag.ISO2 = _repository.GetCountryISO2(country);
             return View(_repository.GetProgress(country,start,end));
         }
